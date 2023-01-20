@@ -1,27 +1,16 @@
 <?php
-
-abstract class AbstractClass
+trait Printer
 {
-    abstract protected function prefixName($name);
+    public function printSimpleGreeting($name){ echo "Hello dear {$name} <br>"; }
+    public function printSimpleFarewell($name){ echo "Goodbye dear {$name} <br>"; }
 }
 
-class ConcreateClass extends AbstractClass
+class TelegramBot
 {
-    public function prefixName($name, $separator=".")
-    {
-        if($name=="Pacman"){
-            $prefix="Mr";
-        } elseif($name=="Pacwoman"){
-            $prefix="Ms";
-        } else{
-            $prefix="Dr";
-        }
-
-        return "{$prefix}{$separator}{$name}";
-    }
+    use Printer;
 }
 
-$pac = new ConcreateClass;
-echo $pac->prefixName("Daniil");
-
+$existedTelegramBot = new TelegramBot;
+$existedTelegramBot->printSimpleGreeting('Kimqwezz');
+$existedTelegramBot->printSimpleFarewell('Sovux');
 ?>
