@@ -1,16 +1,37 @@
 <?php
-trait Printer
+
+class Company 
 {
-    public function printSimpleGreeting($name){ echo "Hello dear {$name} <br>"; }
-    public function printSimpleFarewell($name){ echo "Goodbye dear {$name} <br>"; }
+    public $name;
+    function __construct($name)
+    {
+        $this->name = $name;
+    }
 }
 
-class TelegramBot
+class Person
 {
-    use Printer;
+    public $name, $company;
+    function __construct($name, $company) 
+    {
+        $this->name=$name;
+        $this->company=$company;
+    }
+    function __clone()
+    {
+        $this->company = clone $this->company;
+    }
 }
 
-$existedTelegramBot = new TelegramBot;
-$existedTelegramBot->printSimpleGreeting('Kimqwezz');
-$existedTelegramBot->printSimpleFarewell('Sovux');
+$microsoft = new Company("Microsoft");
+$tom = new Person("Tom", $microsoft);
+
+$bob = clone $tom;
+$bob->name = "Bob";
+$bob->company->name = "Google";
+echo $tom->company->name;
+echo $bob->company->name;
+
+
+
 ?>
