@@ -1,49 +1,34 @@
 <?php
 
-class Account
+class Person 
 {
-    static $bankAccount;
-    public $nameOfUser;
-
-    function __construct($nameOfUser, $bankAccount=61_182)
+    public $name, $age;
+    static $retirementAge=65;
+    function __construct($name,$age)
     {
-        $this->nameOfUser = $nameOfUser;
-        $this->bankAccount = $bankAccount;
+        $this->name = $name;
+        $this->age = $age;
     }
 
-    function increaseBankAccount ($digit)
+    function sayHello()
     {
-        $bankAccount = $this->bankAccount + $digit;
-        $this->getBankAccount($bankAccount);
+        echo "Hi, my name is $this->name";
     }
 
-    function decreaseBankAccount($digit)
+    static function printPerson($person) 
     {
-        $bankAccount = $this->bankAccount - $digit;
-        $this->getBankAccount($bankAccount);
+        echo "Name: $person->name, Age: $person->age";
     }
-    function getSumFrom($otherAccount, $digit)
+    
+    function checkAge() 
     {
-        $otherAccount->bankAccount -= $digit;
-        $this->bankAccount += $digit;
-
-        $this->getBankAccount($this->bankAccount);
+        if($this->age >= self::$retirementAge)
+            echo "Go to retirement";
+        else
+            echo "For retirement about " . (Person::$retirementAge - $this->age) . " years. <br>";
     }
-
-    function getBankAccount($bankAccount)
-    {
-        echo "The amount on your bank account mr $this->nameOfUser is - $bankAccount$ <br><br>"; 
-    }
-    function __destruct(){}
 }
 
-$bankAccountDaeYoung = new Account("DaeYoung");
-$bankAccountDaeYoung->increaseBankAccount(25_000);
-$bankAccountDaeYoung->increaseBankAccount(125_000);
-$bankAccountDaeYoung->increaseBankAccount(1);
-
-$bankAccountKim = new Account("Kim");
-$bankAccountKim->increaseBankAccount(1_257);
-
-$bankAccountDaeYoung->getSumFrom($bankAccountKim, 25_205);
+$tom = new Person("Tom", 19);
+$tom->checkAge();
 ?>
