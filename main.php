@@ -1,19 +1,29 @@
 <?php
 
-interface iMessenger 
+abstract class Messenger 
 {
-    function send();
-}
-
-class EmailMessenger implements iMessenger
-{
-    function send()
+    protected $name;
+    function __construct($name)
     {
-        echo "Send you on e-mail.";
+        $this->name = $name;
+    }
+    abstract function send($message);
+    function close()
+    {
+        echo "Leaving this messenger";
     }
 }
 
-$outlook = new EmailMessenger();
-$outlook->send();
+class Telegram extends Messenger
+{
+    function send($message)
+    {
+        echo "$this->name sending sms: $message<br>";
+    }
+}
+
+$outlook = new Telegram("Kimqwezz");
+$outlook->send("Hello php 7(");
+$outlook->close();
 
 ?>
