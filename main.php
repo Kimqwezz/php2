@@ -1,29 +1,27 @@
 <?php
 
-abstract class Messenger 
+abstract class AbstractClass
 {
-    protected $name;
-    function __construct($name)
+    abstract protected function prefixName($name);
+}
+
+class ConcreateClass extends AbstractClass
+{
+    public function prefixName($name, $separator=".")
     {
-        $this->name = $name;
-    }
-    abstract function send($message);
-    function close()
-    {
-        echo "Leaving this messenger";
+        if($name=="Pacman"){
+            $prefix="Mr";
+        } elseif($name=="Pacwoman"){
+            $prefix="Ms";
+        } else{
+            $prefix="Dr";
+        }
+
+        return "{$prefix}{$separator}{$name}";
     }
 }
 
-class Telegram extends Messenger
-{
-    function send($message)
-    {
-        echo "$this->name sending sms: $message<br>";
-    }
-}
-
-$outlook = new Telegram("Kimqwezz");
-$outlook->send("Hello php 7(");
-$outlook->close();
+$pac = new ConcreateClass;
+echo $pac->prefixName("Daniil");
 
 ?>
