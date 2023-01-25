@@ -1,17 +1,11 @@
 <?php
+$business = [
+    'name' => 'Laracasts',
+    'cost' => 120,
+    'categories' => ['Testing', 'PHP', 'JavaScript']
+]; 
 
-class Main
-{
-    private $name, $age;
-    function __construct($name, $age)
-    {
-        $this->name = $name;
-        $this->age = $age;
-    }
+function register($user) {}
 
-    function printInfo()
-    {
-        echo "<br>Name $this->name<br>, age $this->age";
-    }
-}
+require "html.php";
 ?>
