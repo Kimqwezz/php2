@@ -11,9 +11,10 @@
     <h1><?= $business['name'] ?></h1>
     
     <ul>
-        <?php foreach ($business['categories'] as $category) : ?>
-            <li><?= $category; ?></li>
-        <?php endforeach; ?>
+        <?php foreach($business['goods'] as $nameOfGood => $good) :?> 
+            <li><?= $nameOfGood . " - " . $good . " som"; ?></li>
+        <?php endforeach; ?>    
     </ul>
 </body>
 </html>
+

@@ -1,11 +1,15 @@
 <?php
 $business = [
-    'name' => 'Laracasts',
-    'cost' => 120,
-    'categories' => ['Testing', 'PHP', 'JavaScript']
+    'name' => 'K-cosmetics',
+    'goods' => [
+        'Shampoo' => 220,
+        'Foam' => 919,
+        'Sunproof cream' => 175,
+        'Essence' => 2_200
+    ]
 ]; 
 
-function register($user) {}
+
 
 require "html.php";
 ?>
