@@ -21,7 +21,7 @@ if (isset($_POST["username"]) && isset($_POST["userage"])) {
 function outputDataFromDB()
 {
     $conn = new PDO("mysql:host=127.0.0.1; port=3305; dbname=phphp", "root", "root");
-    $sqlSelect = "SELECT * FROM Users";
+    $sqlSelect = "SELECT * FROM Users WHERE age > 18";
     $resultSelect = $conn->query($sqlSelect); 
     echo "<table><tr><th>ID</th><th>Name</th><th>Age</th></tr>";
     while($row = $resultSelect->fetch()){
