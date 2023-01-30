@@ -8,32 +8,47 @@
 </head>
 <body>
 <?php
-if (isset($_POST["username"]) && isset($_POST["userage"])) {
+// if (isset($_POST["username"]) && isset($_POST["userage"])) {
 
-    $username = $_POST["username"];
-    $userage = $_POST["userage"];
-    $conn = new PDO("mysql:host=127.0.0.1; port=3305; dbname=phphp", "root", "root");
+//     $username = $_POST["username"];
+//     $userage = $_POST["userage"];
+//     $conn = new PDO("mysql:host=127.0.0.1; port=3305; dbname=phphp", "root", "root");
     
-    $sqlInsert = "INSERT INTO Users (name, age) VALUES ('$username', $userage)";
-    $resultInsert = $conn->exec($sqlInsert); 
-};
+//     $sqlInsert = "INSERT INTO Users (name, age) VALUES ('$username', $userage)";
+//     $resultInsert = $conn->exec($sqlInsert); 
+// };
 
-function outputDataFromDB()
-{
-    $conn = new PDO("mysql:host=127.0.0.1; port=3305; dbname=phphp", "root", "root");
-    $sqlSelect = "SELECT * FROM Users WHERE age > 18";
-    $resultSelect = $conn->query($sqlSelect); 
-    echo "<table><tr><th>ID</th><th>Name</th><th>Age</th></tr>";
-    while($row = $resultSelect->fetch()){
-        echo "<tr>";
-            echo "<td>" . $row["id"] . "</td>";
-            echo "<td>" . $row["name"] . "</td>";
-            echo "<td>" . $row["age"] . "</td>";
-        echo "</tr>";
-    }
-}
+// function outputDataFromDB()
+// {
+//     $conn = new PDO("mysql:host=127.0.0.1; port=3305; dbname=phphp", "root", "root");
+//     $sqlSelect = "SELECT * FROM Users WHERE age >= 18 ORDER BY age";
+//     $resultSelect = $conn->query($sqlSelect); 
+//     echo "<table><tr><th>ID</th><th>Name</th><th>Age</th></tr>";
+//     while($row = $resultSelect->fetch()){
+//         echo "<tr>";
+//             echo "<td>" . $row["id"] . "</td>";
+//             echo "<td>" . $row["name"] . "</td>";
+//             echo "<td>" . $row["age"] . "</td>";
+//         echo "</tr>";
+//     }
+// }
 
-outputDataFromDB();
+// outputDataFromDB();
+
+// function deleteDataFromDB()
+// {
+//     $conn = new PDO("mysql:host=127.0.0.1; port=3305; dbname=phphp", "root", "root");
+//     $sqlSelect = "SELECT * FROM users";
+//     $result = $conn->query($sqlSelect);
+//     echo "<table><tr><th>ID</th><th>Name</th><th>Age</th></tr>";
+//     foreach($result as $row){
+//         echo "<tr>";
+//             echo "<td>" . $row["name"] . "/td";
+//             echo "<td>" . $row[age] . "</td>";
+//             echo "<td><form method='post'>;
+//                         <input type='hidden' name='id' value='";
+//     }
+// }
 ?>
 <h3>Create a new User</h3>
 <form method="post">

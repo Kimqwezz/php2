@@ -1,14 +1,8 @@
 <?php
 
-function my_autoloader($class)
-{
-    echo "Function call autoloader";
-    include $class . ".php";
-}
-
-spl_autoload_register("my_autoloader");
-
-$tom = new Main("Tom", 25);
-$tom->printInfo();
+$conn = new PDO("mysql:host=localhost; dbname=phphp", "root", "root");
+$sqlDelete = "DELETE FROM Users WHERE id = 5";
+$affefctedRowsNumber = $conn->exec($sqlDelete);
+echo "Deleted pages: $affectedRowsNumber";
 
 ?>
